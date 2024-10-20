@@ -1,0 +1,44 @@
+<div class="background">
+    <div class="weather-container">
+        <h1><i class="fas fa-sun sun-icon"></i> Météo</h1>
+        <input type="text" [(ngModel)]="city" placeholder="Entrez une ville" />
+        <button (click)="getWeather()">Obtenir la météo</button>
+
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+        <div *ngIf="weatherData" class="weather-info">
+            <h2>Météo à {{ weatherData.name }}</h2>
+            <img *ngIf="weatherData.weather.length > 0" 
+                 [src]="'http://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" 
+                 alt="{{ weatherData.weather[0].description }}" 
+                 class="weather-icon">
+            <p><i class="fas fa-thermometer-half colored-icon"></i> Température: {{ weatherData.main.temp }} °C</p>
+            <p><i class="fas fa-cloud colored-icon"></i> Conditions: {{ weatherData.weather[0].description }}</p>
+            <p><i class="fas fa-water colored-icon"></i> Humidité: {{ weatherData.main.humidity }}%</p>
+        </div>
+
+        <!-- Prévisions horaires -->
+        <div *ngIf="hourlyData.length > 0" class="hourly-forecast">
+            <h3>Prévisions horaires</h3>
+            <div class="hourly-list">
+                <div *ngFor="let hour of hourlyData" class="hourly-item">
+                    <p>{{ hour.dt_txt | date:'shortTime' }}</p>
+                    <img [src]="'http://openweathermap.org/img/wn/' + hour.weather[0].icon + '@2x.png'" alt="{{ hour.weather[0].description }}">
+                    <p>{{ hour.main.temp }} °C</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prévisions quotidiennes -->
+        <div *ngIf="dailyData.length > 0" class="hourly-forecast">
+            <h3>Prévisions sur 5 jours</h3>
+            <div class="hourly-list">
+                <div *ngFor="let day of dailyData" class="hourly-item">
+                    <p>{{ day.dt_txt | date:'fullDate' }}</p>
+                    <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" alt="{{ day.weather[0].description }}">
+                    <p>{{ day.main.temp }} °C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

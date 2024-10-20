@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden; /* Pour éviter le défilement si le contenu dépasse */
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #FF6B6B, #FFD93D); /* Gradient vibrant */
+    animation: backgroundAnimation 20s ease infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(120deg, #FF6B6B, #FFD93D);
+    }
+    50% {
+        background: linear-gradient(120deg, #FFD93D, #6BCB77);
+    }
+    100% {
+        background: linear-gradient(120deg, #FF6B6B, #FFD93D);
+    }
+}
+
+.weather-container {
+    max-width: 1200px; /* Augmentation de la largeur maximale */
+    padding: 40px; /* Augmenter le padding pour plus d'espace */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Augmentation de l'opacité pour plus de clarté */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;  
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    animation: slideIn 0.5s ease; /* Animation d'entrée pour le conteneur */
+}
+
+.sun-icon {
+    color: #FFD93D; /* Couleur dorée pour l'icône de soleil */
+    font-size: 2em; /* Augmenter la taille de l'icône */
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+}
+
+.colored-icon {
+    color: #FF6B6B; /* Couleur rouge vif pour les icônes */
+}
+
+h1 {
+    font-size: 3em; /* Augmentation de la taille du texte du h1 */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    padding: 12px;
+    border: 2px solid #FF6B6B; /* Bordure colorée */
+    border-radius: 5px;
+    margin-bottom: 10px; 
+    width: 90%; /* Augmenter la largeur de l'input */
+    transition: border 0.3s, box-shadow 0.3s; /* Ajout d'une ombre lors du focus */
+}
+
+input:focus {
+    border: 2px solid #FFD93D; /* Changement de couleur au focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); /* Ombre légère lors du focus */
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6B6B; /* Couleur de fond vive */
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s; /* Ajout d'une ombre lors du hover */
+}
+
+button:hover {
+    background-color: #FF4C4C; /* Couleur plus foncée lors du hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre lors du hover */
+}
+
+.weather-info {
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-icon {
+    width: 120px; /* Augmentation de la taille de l'icône */
+    height: auto;
+    margin: 10px 0;
+    transition: transform 0.3s, filter 0.3s; /* Ajout d'un effet de filtre */
+}
+
+.weather-icon:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8)); /* Ombre portée sur l'icône */
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Styles pour les prévisions horaires */
+.hourly-forecast {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hourly-list {
+    display: flex;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    padding: 10px 0;
+}
+
+.hourly-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s; /* Ajout de l'ombre lors du hover */
+}
+
+.hourly-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombre plus marquée lors du hover */
+    background-color: rgba(255, 223, 186, 0.8); /* Couleur de fond qui change lors du hover */
+}
+
+.hourly-item img {
+    width: 80px; /* Augmentation de la taille de l'icône */
+    height: auto;
+    transition: filter 0.3s; /* Ajout d'effet de filtre */
+}
+
+.hourly-item img:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.8)); /* Ombre sur l'image */
+}
